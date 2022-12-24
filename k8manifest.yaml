@@ -1,0 +1,41 @@
+#deployment
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: django-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels: 
+      app: django-todo
+  template:
+    metadata:
+      labels:
+        app: django-todo
+    spec:
+      containers:
+        - name: django-todo
+          image: 109722177373.dkr.ecr.us-east-1.amazonaws.com/myecrrepo
+          imagePullPolicy: Always
+          ports:
+            containerPort: 8085
+
+#Service
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: django-service
+  labels:
+    app: django-todo
+spec:
+  ports:
+    - name: http
+      port: 80
+      protocol: tcp
+      targetPort: 8085
+  type: LoadBalancer
+  selector:
+    app: django-todo
+
