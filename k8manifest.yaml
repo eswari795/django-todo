@@ -18,7 +18,7 @@ spec:
           image: 109722177373.dkr.ecr.us-east-1.amazonaws.com/myecrrepo
           imagePullPolicy: Always
           ports:
-            containerPort: 8085
+          - containerPort: 8085
 
 #Service
 
