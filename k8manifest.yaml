@@ -26,14 +26,14 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: django-service
+  name: django
   labels:
     app: django-todo
 spec:
   ports:
     - name: http
       port: 80
-      protocol: tcp
+      protocol: TCP
       targetPort: 8085
   type: LoadBalancer
   selector:
