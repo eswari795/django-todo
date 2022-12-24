@@ -31,7 +31,7 @@ pipeline{
         stage("deploy to k8"){
             steps{
                 withKubeConfig(caCertificate: '', clusterName: '', contextName: '', credentialsId: 'k8s', namespace: '', serverUrl: '') {
-                        sh "kubectl create -f k8manifest.yaml"
+                        sh "kubectl apply -f k8manifest.yaml"
                 }
             }
         }
